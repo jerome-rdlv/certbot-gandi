@@ -1,6 +1,6 @@
 {
     "name": "certbot-gandi",
-    "description": "Scripts to allow Certbot to automatically renew certificates for domains managed by Gandi.",
+    "description": "Gandi LiveDNS authentication script for Certbot.",
     "main": "authenticator.js",
     "author": "Jérôme Mulsant",
     "license": "MIT",
