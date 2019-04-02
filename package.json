@@ -1,0 +1,12 @@
+{
+    "name": "certbot-gandi",
+    "description": "Scripts to allow Certbot to automatically renew certificates for domains managed by Gandi.",
+    "main": "authenticator.js",
+    "author": "Jérôme Mulsant",
+    "license": "MIT",
+    "private": false,
+    "bin": {
+        "certbot-gandi-auth": "./authenticator.js",
+        "certbot-gandi-clean": "./cleanup.js"
+    }
+}
