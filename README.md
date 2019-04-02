@@ -1,42 +1,40 @@
 # Certbot authenticator for Gandi API
 
-These commands allow [Certbot][certbot] to automatically renew
+These scripts allow [Certbot][certbot] to automatically renew
 locally-generated certificates for domains managed
-by [Gandi][gandi].
+by [Gandi LiveDNS][gapi].
 
 When certificate is generated locally, Certbot will need a way
 to validate the Let’s Encrypt DNS challenge.
 
 The two commands, `certbot-gandi-auth` and `certbot-gandi-clean`
-will connect to [Gandi DNS API][gapi] to add the required
+will connect to Gandi LiveDNS API to add the required
 DNS TXT records, and clean it after the verification.
 
-## Installation
+## Configuration
 
-```bash
-git clone https://github.com/jerome-rdlv/certbot-gandi.git
-cd certbot-gandi
-yarn install
-sudo yarn link
-```
-
-That last command will install the two commands in your binary
-folder (`/usr/local/bin` for example) so they will be
-in Certbot PATH during its execution.
-
-## Gandi DNS API key
-
-For the commands to be able to connect Gandi DNS API,
-a key is needed. It can be found, or generated, on
+For the commands to be able to connect Gandi LiveDNS API,
+a token is needed. It can be found, or generated, on
 https://account.gandi.net/, in the *Security* tab.
 
-That API key must be set in the `GANDI_API_KEY` environment
+That API token must be set in the `GANDI_API_TOKEN` environment
 variable. For example in `/root/.profile` (because Certbot renew
 is executed as root):
 
 ```bash
-export GANDI_API_KEY=XXXXXXXXXXXXXXX
+export GANDI_API_TOKEN=XXXXXXXXXX
 ```
+
+## Installation
+
+1. `git clone https://github.com/jerome-rdlv/certbot-gandi.git`
+2. `cd certbot-gandi`
+3. `yarn install`
+4. `sudo yarn link`
+
+That last command will install the two scripts in your binary
+folder (`/usr/local/bin` for example) so they will be
+in Certbot PATH during its execution.
 
 ## Usage
 
@@ -63,5 +61,4 @@ I’m interested in any feedback.
 Jérôme Mulsant https://rue-de-la-vieille.fr
 
 [certbot]: https://certbot.eff.org/
-[gandi]: https://www.gandi.net
 [gapi]: https://doc.livedns.gandi.net/

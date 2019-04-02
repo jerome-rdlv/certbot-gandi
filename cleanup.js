@@ -3,10 +3,10 @@
 'use strict';
 
 const https = require('https');
-const api_key = process.env.GANDI_API_KEY;
+const token = process.env.GANDI_API_TOKEN;
 
-if (!api_key) {
-    console.error('You must set GANDI_API_KEY environment variable.');
+if (!token) {
+    console.error('You must set GANDI_API_TOKEN environment variable.');
     process.exit(1);
 }
 
@@ -20,7 +20,7 @@ if (!url) {
 const options = {
     method: 'DELETE',
     headers: {
-        'X-Api-Key': api_key,
+        'X-Api-Key': token,
         'Content-Type': 'application/json'
     }
 };
