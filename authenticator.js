@@ -39,13 +39,13 @@ function postValues(values) {
     return new Promise(function (resolve, reject) {
         values.push(process.env.CERTBOT_VALIDATION);
         const body = JSON.stringify({
-            rrset_ttl: 10800,
+            rrset_ttl: 1200,
             rrset_values: values
         });
         const options = {
             method: 'POST',
             headers: {
-                'X-Api-Key': token,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
                 'Content-Length': body.length
             }
@@ -67,7 +67,7 @@ function deleteExistingValues(values) {
             const options = {
                 method: 'DELETE',
                 headers: {
-                    'X-Api-Key': token,
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             };
@@ -86,7 +86,7 @@ function getExistingValues() {
     return new Promise(function (resolve, reject) {
         const options = {
             headers: {
-                'X-Api-Key': token,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         };

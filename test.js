@@ -10,18 +10,24 @@ if (!token) {
     process.exit(1);
 }
 
-const url = process.env.CERTBOT_AUTH_OUTPUT;
-
-if (!url) {
-    console.error('This script is to be called by Certbot.');
-    process.exit(1);
-}
+const url = `https://id.gandi.net/tokeninfo`;
 
 const options = {
-    method: 'DELETE',
+    method: 'GET',
     headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
     }
 };
-https.request(url, options).end();
+
+const request = https.request(url, options, res => {
+    console.log('statusCode:', res.statusCode);
+    console.log('headers:', res.headers);
+    res.on('data', d => {
+        console.log('body:', JSON.parse(d));
+    });
+});
+request.on('error', e => console.error(e));
+request.end();
+
+

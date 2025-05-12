@@ -1,5 +1,7 @@
 # Certbot authenticator for Gandi API
 
+(Could use [Certbot Plugin Gandi](https://github.com/obynio/certbot-plugin-gandi) as an alternative.)
+
 These scripts allow [Certbot][certbot] to automatically renew
 locally-generated certificates for domains managed
 by [Gandi LiveDNS][gapi].
